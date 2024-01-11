@@ -30,9 +30,6 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.login_registerBtn = new System.Windows.Forms.Button();
             this.login_btn = new System.Windows.Forms.Button();
             this.login_showPass = new System.Windows.Forms.CheckBox();
             this.login_password = new System.Windows.Forms.TextBox();
@@ -41,6 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.close = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -50,8 +48,6 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(99)))), ((int)(((byte)(102)))));
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.login_registerBtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -63,46 +59,11 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(3, 187);
+            this.label6.Location = new System.Drawing.Point(33, 263);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(320, 23);
+            this.label6.Size = new System.Drawing.Size(265, 23);
             this.label6.TabIndex = 9;
-            this.label6.Text = "Cafe Shop Management System";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::FreeStyleCafeSystemManagement.Properties.Resources.latte;
-            this.pictureBox1.Location = new System.Drawing.Point(108, 84);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(76, 382);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(192, 23);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Create an Account";
-            // 
-            // login_registerBtn
-            // 
-            this.login_registerBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(99)))), ((int)(((byte)(102)))));
-            this.login_registerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.login_registerBtn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.login_registerBtn.ForeColor = System.Drawing.Color.White;
-            this.login_registerBtn.Location = new System.Drawing.Point(22, 418);
-            this.login_registerBtn.Name = "login_registerBtn";
-            this.login_registerBtn.Size = new System.Drawing.Size(301, 43);
-            this.login_registerBtn.TabIndex = 9;
-            this.login_registerBtn.Text = "REGISTER";
-            this.login_registerBtn.UseVisualStyleBackColor = false;
-            this.login_registerBtn.Click += new System.EventHandler(this.login_registerBtn_Click);
+            this.label6.Text = "Cafe Management System";
             // 
             // login_btn
             // 
@@ -188,6 +149,16 @@
             this.close.Text = "X";
             this.close.Click += new System.EventHandler(this.close_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::FreeStyleCafeSystemManagement.Properties.Resources.latte;
+            this.pictureBox1.Location = new System.Drawing.Point(107, 160);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -221,8 +192,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button login_registerBtn;
         private System.Windows.Forms.Button login_btn;
         private System.Windows.Forms.CheckBox login_showPass;
         private System.Windows.Forms.TextBox login_password;

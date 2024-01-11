@@ -22,6 +22,8 @@ namespace FreeStyleCafeSystemManagement
         private void MainForm_Load(object sender, EventArgs e)
         {
             con = new SqlConnection("Data Source=DESKTOP-S8GNLDU\\SQLEXPRESS;Initial Catalog=FreeStyle;Integrated Security=True");
+            UpdateProductCount();
+            UpdateUserCount();
         }
 
         private void close_Click(object sender, EventArgs e)
@@ -56,6 +58,68 @@ namespace FreeStyleCafeSystemManagement
             addUsersForm.Show();
 
             this.Hide();
+        }
+
+        private void UpdateProductCount()
+        {
+            try
+            {
+                con.Open();
+          
+
+                    // Define your SQL query to get the count of products.
+                    string sqlQuery = "SELECT COUNT(*) FROM fsproducts";
+
+                    using (SqlCommand command = new SqlCommand(sqlQuery, con))
+                    {
+                        // Execute the query and get the count.
+                        int productCount = Convert.ToInt32(command.ExecuteScalar());
+
+                    // Update the Text property of the label with the count.
+                        total_product.Text = $"{productCount}";
+                    }
+                
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions appropriately (e.g., show an error message).
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        private void UpdateUserCount()
+        {
+            try
+            {
+                con.Open();
+
+
+                // Define your SQL query to get the count of products.
+                string sqlQuery = "SELECT COUNT(*) FROM fsusers";
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, con))
+                {
+                    // Execute the query and get the count.
+                    int userCount = Convert.ToInt32(command.ExecuteScalar());
+
+                    // Update the Text property of the label with the count.
+                    total_user.Text = $"{userCount}";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions appropriately (e.g., show an error message).
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                con.Close();
+            }
         }
     }
 }

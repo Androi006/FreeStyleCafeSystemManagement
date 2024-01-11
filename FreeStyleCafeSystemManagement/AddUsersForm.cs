@@ -94,5 +94,134 @@ namespace FreeStyleCafeSystemManagement
             User_password.Text = "";
             User_role.Text = "";
         }
+
+        private void User_updateBtn_Click(object sender, EventArgs e)
+        {
+            int userId = Convert.ToInt32(User_id.Text);
+            string userName = User_name.Text;
+            string role = User_role.Text;
+            string password = User_password.Text;
+
+            UpdateUser(userId, userName, role, password);
+        }
+        private void UpdateUser(int userId, string userName, string role, string password)
+        {
+            try
+            {
+                con.Open();
+
+                string updateQuery = "UPDATE fsusers SET username = @Name, role = @Role, password = @Password WHERE id = @Id";
+
+                using (SqlCommand cmd = new SqlCommand(updateQuery, con))
+                {
+                    cmd.Parameters.AddWithValue("@Name", userName);
+                    cmd.Parameters.AddWithValue("@Role", role);
+                    cmd.Parameters.AddWithValue("@Password", password);
+                    cmd.Parameters.AddWithValue("@Id", userId);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    clearFields();
+                    showuser();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("User updated successfully");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to update user");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        private void User_deleteBtn_Click(object sender, EventArgs e)
+        {
+            int userId = Convert.ToInt32(User_id.Text);
+
+            DeleteUser(userId);
+        }
+        private void DeleteUser(int userId)
+        {
+            try
+            {
+                con.Open();
+
+                string deleteQuery = "DELETE FROM fsusers WHERE id = @Id";
+
+                using (SqlCommand cmd = new SqlCommand(deleteQuery, con))
+                {
+                    cmd.Parameters.AddWithValue("@Id", userId);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    clearFields();
+                    showuser();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("User deleted successfully");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete user");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        private void User_clearBtn_Click(object sender, EventArgs e)
+        {
+            clearFields();
+        }
+
+        private void User_backBtn_Click(object sender, EventArgs e)
+        {
+            MainForm mainForm = new MainForm();
+            mainForm.Show();
+
+            this.Hide();
+        }
+
+        private void User_searchBtn_Click(object sender, EventArgs e)
+        {
+            if (User_id.Text == "")
+                showuser();
+            else
+            {
+                string sql = "SELECT * FROM fsusers WHERE id= '" + User_id.Text + "'";
+                con.Open();
+                da = new SqlDataAdapter(sql, con);
+                dtb = new DataTable();
+                da.Fill(dtb);
+                dataGridView2.DataSource = dtb;
+                con.Close();
+            }
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            DataGridViewRow SelecteRow = dataGridView2.Rows[index];
+            User_id.Text = SelecteRow.Cells[0].Value.ToString();
+            User_name.Text = SelecteRow.Cells[1].Value.ToString();
+            User_role.Text = SelecteRow.Cells[3].Value.ToString();
+            User_password.Text = SelecteRow.Cells[2].Value.ToString();
+        }
     }
 }
